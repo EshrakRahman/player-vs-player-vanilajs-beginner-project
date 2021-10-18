@@ -5,7 +5,6 @@ const p1BtnElm = document.querySelector(".p1Btn");
 const p1ScoreElm = document.querySelector(".p1Score");
 const p2BtnElm = document.querySelector(".p2Btn");
 const p2ScoreElm = document.querySelector(".p2Score");
-
 const resetElm = document.querySelector(".reset");
 
 let winScore = 20;
@@ -20,10 +19,23 @@ function checkWinner() {
         p1BtnElm.setAttribute('disabled', 'disabled');
         p2BtnElm.setAttribute('disabled', 'disabled');
     }
-
-
     displayWinner(isP1Winner, isP2QWinner);
 }
+
+resetElm.addEventListener('click', evt => {
+    winScore = 0;
+    p1Score = 0;
+    p2Score = 0;
+    inputElm.value = '';
+    p1ScoreElm.textContent = '0';
+    p2ScoreElm.textContent = '0';
+    winScoreElm.textContent = '0';
+    p2BtnElm.removeAttribute('disabled');
+    p1BtnElm.removeAttribute('disabled');
+
+    formElm.insertAdjacentHTML("beforebegin", "<p class='winner-message'>Restart the game</p>");
+
+});
 
 function displayWinner(p1, p2) {
     if (p1){
@@ -40,16 +52,6 @@ formElm.addEventListener('submit', ev => {
     inputElm.value = '';
 });
 
-resetElm.addEventListener('click', evt => {
-    inputElm.value = '';
-    p1ScoreElm.textContent = '0';
-    p2ScoreElm.textContent = '0';
-    winScoreElm.textContent = '0';
-    p2BtnElm.removeAttribute('disabled');
-
-    p1BtnElm.removeAttribute('disabled');
-
-});
 
 p1BtnElm.addEventListener('click', e=>{
     if (turn === 'player-1'){
