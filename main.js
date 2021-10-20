@@ -62,6 +62,8 @@ p2BtnElm.addEventListener('click', e=>{
     }
 })
 
+
+
 resetElm.addEventListener('click', evt => {
     // let resetMsg = "Restart the game";
     winScore = 0;
@@ -78,7 +80,11 @@ resetElm.addEventListener('click', evt => {
     const winningMsg = document.querySelector(".winner-message")
     winningMsg.remove();
 
-    formElm.insertAdjacentHTML("beforebegin", "<p class='restart-message'>Restart the game</p>");
+    formElm.insertAdjacentHTML("beforebegin", "<p class='restart-message'>The game has been restarted!</p>");
+    inputElm.addEventListener('click', check =>{
+        const deleteResetMsg = document.querySelector(".restart-message");
+        deleteResetMsg.remove();
+    })
 
 });
 
