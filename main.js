@@ -7,10 +7,10 @@ const p2BtnElm = document.querySelector(".p2Btn");
 const p2ScoreElm = document.querySelector(".p2Score");
 const resetElm = document.querySelector(".reset");
 
-let winScore = 20;
+let winScore = 0;
 let p1Score = 0;
 let p2Score = 0;
-let turn = "player-1";
+let turn = "";
 
 function checkWinner() {
     const isP1Winner = p1Score === winScore;
@@ -21,7 +21,6 @@ function checkWinner() {
     }
     displayWinner(isP1Winner, isP2QWinner);
 }
-
 
 
 function displayWinner(p1, p2) {
@@ -41,6 +40,7 @@ formElm.addEventListener('submit', ev => {
 
 
 p1BtnElm.addEventListener('click', e=>{
+    turn = "player-1";
     if (turn === 'player-1'){
         p1Score++;
         p1ScoreElm.textContent = p1Score;
@@ -48,10 +48,13 @@ p1BtnElm.addEventListener('click', e=>{
         p1BtnElm.setAttribute('disabled', 'disabled');
         p2BtnElm.removeAttribute('disabled');
         checkWinner();
+
+        console.log(p1Score);
     }
 })
 
 p2BtnElm.addEventListener('click', e=>{
+    turn = "player-2";
     if (turn === "player-2"){
         p2Score++;
         p2ScoreElm.textContent = p2Score;
@@ -59,6 +62,8 @@ p2BtnElm.addEventListener('click', e=>{
         p2BtnElm.setAttribute('disabled', 'disabled');
         p1BtnElm.removeAttribute('disabled');
         checkWinner();
+        
+        console.log(p2Score);
     }
 })
 
