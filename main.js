@@ -22,20 +22,7 @@ function checkWinner() {
     displayWinner(isP1Winner, isP2QWinner);
 }
 
-resetElm.addEventListener('click', evt => {
-    winScore = 0;
-    p1Score = 0;
-    p2Score = 0;
-    inputElm.value = '';
-    p1ScoreElm.textContent = '0';
-    p2ScoreElm.textContent = '0';
-    winScoreElm.textContent = '0';
-    p2BtnElm.removeAttribute('disabled');
-    p1BtnElm.removeAttribute('disabled');
 
-    formElm.insertAdjacentHTML("beforebegin", "<p class='winner-message'>Restart the game</p>");
-
-});
 
 function displayWinner(p1, p2) {
     if (p1){
@@ -74,4 +61,24 @@ p2BtnElm.addEventListener('click', e=>{
         checkWinner();
     }
 })
+
+resetElm.addEventListener('click', evt => {
+    // let resetMsg = "Restart the game";
+    winScore = 0;
+    p1Score = 0;
+    p2Score = 0;
+    inputElm.value = '';
+    p1ScoreElm.textContent = '0';
+    p2ScoreElm.textContent = '0';
+    winScoreElm.textContent = '0';
+    p2BtnElm.removeAttribute('disabled');
+    p1BtnElm.removeAttribute('disabled');
+    turn = "player-1";
+
+    const winningMsg = document.querySelector(".winner-message")
+    winningMsg.remove();
+
+    formElm.insertAdjacentHTML("beforebegin", "<p class='restart-message'>Restart the game</p>");
+
+});
 
